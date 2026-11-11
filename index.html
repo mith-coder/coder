@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1020">
+  <title>Moonbase: Mission Control</title>
+  <style>
+    :root{color-scheme:dark;--bg:#090e1b;--panel:#111a2b;--panel2:#172238;--line:#263650;--text:#f4f7ff;--muted:#a1aec4;--cyan:#64e3df;--gold:#ffcf70;--pink:#ff829c;--green:#94e7a5;--shadow:0 18px 50px #0005}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -5%,#233558 0,transparent 37%),var(--bg);color:var(--text);font:15px/1.5 ui-rounded,"Segoe UI",system-ui,sans-serif;min-height:100vh}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.shell{max-width:1180px;margin:auto;padding:28px 24px 54px}.top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:26px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(145deg,#8cf3e7,#75a9ff);display:grid;place-items:center;color:#0a1322;font-size:23px;box-shadow:0 5px 25px #64e3df44}.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:var(--cyan);font-size:11px;font-weight:800}.brand h1{font-size:20px;margin:0;letter-spacing:-.03em}.top-right{display:flex;align-items:center;gap:12px}.pill{border:1px solid var(--line);border-radius:999px;background:#ffffff08;padding:8px 13px;color:var(--muted);font-size:13px}.pill strong{color:var(--text)}.reset{border:1px solid var(--line);background:transparent;padding:8px 12px;border-radius:10px;color:var(--muted)}.hero{background:linear-gradient(110deg,#17263b 0%,#111b2d 57%,#152036 100%);border:1px solid #2a3b56;border-radius:22px;padding:27px 30px;margin-bottom:19px;position:relative;overflow:hidden;box-shadow:var(--shadow)}.hero:after{content:'☾';position:absolute;right:5%;top:-82px;color:#d9e8ff09;font-size:260px;line-height:1}.hero-row{display:flex;justify-content:space-between;gap:25px;align-items:center;position:relative;z-index:1}.hero h2{font-size:clamp(23px,3vw,34px);line-height:1.15;letter-spacing:-.04em;margin:4px 0 8px}.hero p{margin:0;color:#bdc9dc;max-width:630px}.mission{min-width:160px;text-align:right}.mission .big{font-size:25px;font-weight:800;color:var(--gold)}.mission small{display:block;color:var(--muted)}.track{display:flex;gap:6px;margin-top:22px;position:relative;z-index:1}.track span{height:5px;border-radius:9px;background:#ffffff16;flex:1}.track span.done{background:var(--cyan)}.track span.current{background:var(--gold)}.grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(290px,.85fr);gap:18px}.panel{background:linear-gradient(145deg,#131e30,#101827);border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:var(--shadow)}.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.panel h3{margin:0;font-size:16px;letter-spacing:-.01em}.muted{color:var(--muted)}.small{font-size:12px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.metric{border:1px solid #ffffff0d;background:#ffffff05;border-radius:13px;padding:13px 13px 12px;min-width:0}.metric-top{display:flex;align-items:center;justify-content:space-between;gap:7px}.metric-name{font-size:12px;color:#c0ccdf}.icon{font-size:16px}.metric-val{font-size:21px;font-weight:750;margin:4px 0 8px;white-space:nowrap}.bar{height:6px;background:#ffffff13;border-radius:8px;overflow:hidden}.bar>i{display:block;height:100%;border-radius:8px;background:var(--cyan);transition:width .35s ease,background .35s}.bar>i.warn{background:var(--gold)}.bar>i.danger{background:var(--pink)}.trend{font-size:10px;color:var(--muted);margin-top:5px}.middle{display:grid;gap:18px}.event{border-color:#6b542d;background:linear-gradient(145deg,#34291b,#171b26)}.event h3{color:var(--gold)}.event-text{color:#d8d1c2;margin:8px 0 0;font-size:14px}.event-tag{display:inline-block;background:#ffcf7020;color:var(--gold);border-radius:99px;padding:3px 8px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.ops{display:grid;gap:9px}.op{display:flex;align-items:center;gap:11px;padding:11px;border:1px solid var(--line);background:#ffffff04;border-radius:13px;transition:.18s}.op:hover{border-color:#526987}.op.selected{background:#64e3df10;border-color:#64e3df85}.op input{accent-color:#64e3df;width:17px;height:17px;flex-shrink:0}.op-icon{font-size:19px}.op-info{min-width:0;flex:1}.op-title{font-size:13px;font-weight:700}.op-desc{font-size:11px;color:var(--muted)}.op-cost{font-size:11px;color:var(--gold);white-space:nowrap}.powerline{display:flex;justify-content:space-between;align-items:center;margin:14px 0 10px;padding:11px 12px;border-radius:12px;background:#090f1a;border:1px solid #ffffff0b;font-size:12px}.powerline strong{color:var(--cyan)}.action{width:100%;border:0;border-radius:13px;padding:13px 16px;font-weight:800;background:linear-gradient(100deg,#74eee1,#8fcef9);color:#091423;box-shadow:0 8px 22px #64e3df23;transition:transform .15s,filter .15s}.action:hover{transform:translateY(-1px);filter:brightness(1.07)}.action:disabled{opacity:.5;cursor:not-allowed;transform:none}.builds{margin-top:18px}.build-list{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.build{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:5px;padding:12px;border:1px solid var(--line);border-radius:13px;background:#ffffff04;min-height:110px;transition:.18s}.build:hover:not(:disabled){border-color:var(--gold);background:#ffcf7009}.build:disabled{opacity:.45;cursor:not-allowed}.build .bicon{font-size:20px}.build b{font-size:12px}.build span:last-child{font-size:10px;color:var(--muted)}.cost{color:var(--gold)!important}.bottom{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:18px}.log{display:grid;gap:9px;max-height:200px;overflow:auto;padding-right:4px}.logitem{display:flex;gap:10px;font-size:12px;color:#bdc9dc}.logitem time{color:var(--cyan);font-weight:750;white-space:nowrap}.lesson{background:#101b2c;border:1px solid #2a3b56;border-radius:18px;padding:20px}.lesson h3{margin:0 0 8px;font-size:15px}.lesson p{color:#bdc9dc;font-size:13px;margin:0}.lesson strong{color:var(--gold)}.modal-wrap{position:fixed;inset:0;background:#050914d9;display:grid;place-items:center;padding:20px;z-index:5}.modal{max-width:500px;width:100%;text-align:center;padding:30px;background:#152238;border:1px solid #3a5272;border-radius:22px;box-shadow:0 24px 80px #0009}.modal .emoji{font-size:48px}.modal h2{margin:7px 0;font-size:27px}.modal p{color:#bfcbdd}.modal .action{margin-top:10px}.hidden{display:none!important}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:850px){.grid{grid-template-columns:1fr}.middle{grid-template-columns:1fr 1fr}.bottom{grid-template-columns:1fr}.mission{min-width:120px}}@media(max-width:580px){.shell{padding:18px 13px 36px}.top{align-items:flex-start}.top-right{gap:6px;flex-wrap:wrap;justify-content:flex-end}.pill{padding:7px 9px}.brand h1{font-size:16px}.logo{width:38px;height:38px}.hero{padding:21px 18px}.hero-row{align-items:flex-start;flex-direction:column;gap:12px}.mission{text-align:left}.track{margin-top:17px}.panel{padding:17px}.metrics{grid-template-columns:repeat(2,1fr)}.middle{grid-template-columns:1fr}.build-list{grid-template-columns:repeat(2,1fr)}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="brand"><div class="logo" aria-hidden="true">✦</div><div><div class="eyebrow">Mission control</div><h1>Moonbase: Outpost One</h1></div></div>
+      <div class="top-right"><div class="pill">Crew <strong>4 astronauts</strong></div><div class="pill">Build parts <strong id="parts">4</strong> ◈</div><button class="reset" id="reset" type="button" aria-label="Restart mission">↻ Restart</button></div>
+    </header>
+    <section class="hero" aria-labelledby="mission-title">
+      <div class="hero-row"><div><div class="eyebrow">Your mission · lunar survival</div><h2 id="mission-title">Keep your crew thriving for 8 sols.</h2><p>Every system needs power, parts are limited, and the Moon can surprise you. Make the trade-offs that bring everyone home.</p></div><div class="mission"><div class="big" id="solLabel">Sol 1 <span class="muted">/ 8</span></div><small>One sol = one lunar day</small></div></div>
+      <div class="track" id="track" aria-label="Mission progress"></div>
+    </section>
+    <section class="grid">
+      <div class="panel">
+        <div class="panel-head"><h3>Outpost systems</h3><span class="muted small">Crew status · <b id="status">Stable</b></span></div>
+        <div class="metrics" id="metrics" aria-live="polite"></div>
+      </div>
+      <div class="middle">
+        <section class="panel event" aria-live="polite"><div class="panel-head"><h3>☄ Today on the Moon</h3><span class="event-tag" id="eventTag">Conditions</span></div><p class="event-text" id="eventText"></p></section>
+        <section class="panel">
+          <div class="panel-head"><h3>Choose today's priorities</h3><span class="muted small">Select systems</span></div>
+          <div class="ops" id="operations"></div>
+          <div class="powerline"><span>Power needed</span><strong id="powerNeeded">0 / 0 kWh</strong></div>
+          <button class="action" id="runSol" type="button">Run this sol →</button>
+          <div class="builds"><div class="panel-head" style="margin:20px 0 10px"><h3>Build an upgrade</h3><span class="muted small">one per sol</span></div><div class="build-list" id="builds"></div></div>
+        </section>
+      </div>
+    </section>
+    <section class="bottom">
+      <section class="panel"><div class="panel-head"><h3>Mission log</h3><span class="muted small">Recent updates</span></div><div class="log" id="log" aria-live="polite"></div></section>
+      <aside class="lesson"><h3>🧠 Engineering insight</h3><p id="lessonText">Power is a shared budget. Running a greenhouse helps grow food and make oxygen, but every kilowatt-hour spent there is unavailable to other systems. There is no single best plan—only trade-offs.</p></aside>
+    </section>
+  </main>
+  <div class="modal-wrap hidden" id="modalWrap" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="emoji" id="modalEmoji">🌕</div><h2 id="modalTitle">Mission update</h2><p id="modalText"></p><button class="action" id="modalButton" type="button">Continue mission</button></div></div>
+<script>
+(() => {
+  const maxSols = 8;
+  const initial = () => ({sol:1,parts:4,oxygen:78,water:76,food:72,power:70,shield:45,morale:78,modules:{solar:0,garden:0,recycler:0,shield:0,battery:0},done:false,buildUsed:false,selected:{life:true,garden:true,recycle:true,shield:false,science:false},log:[],event:null});
+  let s=initial();
+  const events=[
+    {tag:'Solar flare',text:'A solar flare is forecast. Active shielding matters today; your crew has limited time outside.',power:-1,radiation:13},
+    {tag:'Dusty panels',text:'Moon dust is coating the solar panels. Power generation is down until the crew cleans them.',power:-2,radiation:0},
+    {tag:'Clear skies',text:'Bright sunlight and calm conditions. A good day to recharge your battery.',power:2,radiation:0},
+    {tag:'Micrometeorites',text:'Tiny space rocks are passing through. The habitat is safe, but repairs could use spare parts.',power:0,radiation:4},
+    {tag:'Cold snap',text:'The lunar night is especially cold. Heating takes extra energy to keep the habitat comfortable.',power:-1,radiation:0},
+    {tag:'Quiet sol',text:'A calm stretch on the lunar surface. Your team can focus on steady operations.',power:0,radiation:0},
+    {tag:'Solar flare',text:'Radiation levels are climbing. Shielding protects the crew, but costs valuable power.',power:-1,radiation:15},
+    {tag:'Dusty panels',text:'Another dust storm is reducing solar output. Your stored energy may come in handy.',power:-2,radiation:0}
+  ];
+  const ops=[
+    {id:'life',icon:'🫁',title:'Life support',desc:'Make oxygen · keep habitat livable',cost:2,mandatory:true},
+    {id:'garden',icon:'🌱',title:'Grow food',desc:'Greenhouse makes food + a little oxygen',cost:2},
+    {id:'recycle',icon:'💧',title:'Recycle water',desc:'Recover water from crew and habitat',cost:1},
+    {id:'shield',icon:'🛡️',title:'Active shielding',desc:'Reduce radiation exposure today',cost:2},
+    {id:'science',icon:'🔭',title:'Science & morale',desc:'Explore nearby · boost crew morale',cost:1}
+  ];
+  const builds=[
+    {id:'solar',icon:'☀️',name:'Solar array',cost:3,desc:'+2 power each sol',lesson:'More solar panels increase your daily energy supply. This makes it easier to run multiple systems, but building them uses parts you could spend elsewhere.'},
+    {id:'garden',icon:'🌿',name:'Greenhouse',cost:3,desc:'Food grows faster',lesson:'A greenhouse provides food and a small amount of oxygen each sol, reducing dependence on supplies sent from Earth. It also needs power to run.'},
+    {id:'recycler',icon:'♻️',name:'Water recycler',cost:2,desc:'Recover more water',lesson:'Recycling turns some used water back into clean water. Closed-loop systems make a mission more sustainable, but require equipment and energy.'},
+    {id:'shield',icon:'🧱',name:'Radiation shelter',cost:3,desc:'Better passive protection',lesson:'Shielding blocks harmful radiation. On the Moon, water and local soil can help protect a habitat—but extra shielding has a mass and construction cost.'},
+    {id:'battery',icon:'🔋',name:'Battery pack',cost:2,desc:'+12 stored power now',lesson:'Batteries store energy when it is available and release it during dark or dusty periods. Storage helps balance supply and demand, but cannot create energy.'}
+  ];
+  const $=id=>document.getElementById(id); const clamp=n=>Math.max(0,Math.min(100,Math.round(n)));
+  function metric(name,icon,value,unit,trend){let cls=value<25?'danger':value<45?'warn':'';return `<div class="metric"><div class="metric-top"><span class="metric-name">${name}</span><span class="icon">${icon}</span></div><div class="metric-val">${value}<span class="muted" style="font-size:12px"> ${unit}</span></div><div class="bar"><i class="${cls}" style="width:${value}%"></i></div><div class="trend">${trend}</div></div>`}
+  function render(){
+    $('parts').textContent=s.parts;$('solLabel').innerHTML=s.done?'Mission complete':`Sol ${s.sol} <span class="muted">/ ${maxSols}</span>`;
+    $('track').innerHTML=Array.from({length:maxSols},(_,i)=>`<span class="${i<s.sol-1||s.done?'done':i===s.sol-1?'current':''}"></span>`).join('');
+    const rad=clamp(s.shield);$('metrics').innerHTML=metric('Oxygen','🫁',clamp(s.oxygen),'%','Crew needs oxygen every sol')+metric('Water','💧',clamp(s.water),'%','Recycling stretches supplies')+metric('Food','🥫',clamp(s.food),'%','Greenhouse grows fresh food')+metric('Power','⚡',clamp(s.power),'kWh','Available for today's systems')+metric('Radiation safety','🛡️',rad,'%','Higher is safer')+metric('Crew morale','💛',clamp(s.morale),'%','Rest and science help morale');
+    const risk=[s.oxygen,s.water,s.food,s.shield,s.morale].some(v=>v<30);$('status').textContent=risk?'Needs attention':'Stable';$('status').style.color=risk?'var(--gold)':'var(--green)';
+    const event=s.event||events[(s.sol-1)%events.length];$('eventTag').textContent=event.tag;$('eventText').textContent=event.text;
+    $('operations').innerHTML=ops.map(o=>`<label class="op ${s.selected[o.id]?'selected':''}"><input type="checkbox" data-op="${o.id}" ${s.selected[o.id]?'checked':''} ${o.mandatory?'disabled':''}><span class="op-icon">${o.icon}</span><span class="op-info"><span class="op-title">${o.title}</span><br><span class="op-desc">${o.desc}</span></span><span class="op-cost">${o.cost} kWh</span></label>`).join('');
+    $('operations').querySelectorAll('input').forEach(x=>x.addEventListener('change',()=>{s.selected[x.dataset.op]=x.checked;render() }));
+    const total=ops.reduce((a,o)=>a+(s.selected[o.id]?o.cost:0),0),generation=Math.max(0,5+s.modules.solar*2+(s.event?.power||0));$('powerNeeded').textContent=`${total} / ${Math.min(100,s.power+generation)} kWh`; $('powerNeeded').style.color=total>s.power+generation?'var(--pink)':'var(--cyan)';
+    $('runSol').disabled=s.done;$('runSol').textContent=s.done?'Mission complete ✓':'Run this sol →';
+    $('builds').innerHTML=builds.map(b=>`<button class="build" data-build="${b.id}" ${s.done||s.buildUsed||s.parts<b.cost||s.modules[b.id]&&b.id!=='battery'?'disabled':''}><span class="bicon">${b.icon}</span><b>${b.name}</b><span>${b.desc}</span><span class="cost">${s.modules[b.id]&&b.id!=='battery'?'Built ✓':`${b.cost} parts`}</span></button>`).join('');
+    $('builds').querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>build(btn.dataset.build)));
+    $('log').innerHTML=s.log.length?s.log.map(x=>`<div class="logitem"><time>${x.day}</time><span>${x.text}</span></div>`).join(''):'<div class="muted small">Your mission log will appear here after the first sol.</div>';
+  }
+  function addLog(text,day=`Sol ${s.sol}`){s.log.unshift({day,text});s.log=s.log.slice(0,12)}
+  function build(id){let b=builds.find(x=>x.id===id);if(!b||s.parts<b.cost||s.buildUsed)return;s.parts-=b.cost;s.buildUsed=true;s.modules[id]++;
+    if(id==='battery')s.power=clamp(s.power+12); if(id==='shield')s.shield=clamp(s.shield+12);
+    addLog(`${b.name} built. ${b.lesson}`);$('lessonText').textContent=b.lesson;render();}
+  function endGame(won,title,text,emoji){s.done=true;render();$('modalEmoji').textContent=emoji;$('modalTitle').textContent=title;$('modalText').textContent=text;$('modalButton').textContent=won?'Launch another mission':'Try again';$('modalWrap').classList.remove('hidden')}
+  function run(){if(s.done)return;let ev=s.event||events[(s.sol-1)%events.length];let gen=Math.max(0,5+s.modules.solar*2+(ev.power||0));let cost=ops.reduce((a,o)=>a+(s.selected[o.id]?o.cost:0),0);let available=s.power+gen;
+    if(cost>available){$('powerNeeded').animate([{transform:'translateX(0)'},{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}],{duration:280});return}
+    let left=available-cost;let powered={...s.selected};
+    s.oxygen-=3;s.water-=5;s.food-=5;
+    if(powered.life)s.oxygen+=14;
+    if(powered.garden){s.food+=s.modules.garden?13:7;s.oxygen+=2}
+    if(s.modules.garden)s.food+=4;
+    if(powered.recycle)s.water+=s.modules.recycler?12:7;
+    if(powered.shield)s.shield+=13;
+    let radiation=ev.radiation||0;let protection=(powered.shield?14:0)+s.modules.shield*6;s.shield=clamp(s.shield-radiation+protection);
+    if(powered.science)s.morale+=8;else s.morale-=3;
+    if(ev.tag==='Cold snap')s.power=clamp(left-2);else s.power=clamp(left);
+    s.oxygen=clamp(s.oxygen);s.water=clamp(s.water);s.food=clamp(s.food);s.morale=clamp(s.morale);
+    addLog(`${ev.tag}: generated ${gen} kWh, used ${cost}. ${powered.garden?'Greenhouse produced food. ':''}${powered.shield?'The crew sheltered from radiation.':''}`);
+    let failing=[['oxygen',s.oxygen],['water',s.water],['food',s.food],['radiation safety',s.shield],['morale',s.morale]].find(x=>x[1]<=0);
+    if(failing){endGame(false,'Mission in danger',`The crew ran out of ${failing[0]}. Mission control is bringing the team home. Review your daily priorities, upgrades, and the engineering trade-offs, then try again.`, '🛰️');return}
+    if(s.sol>=maxSols){endGame(true,'Outpost thriving!',`Your crew completed all 8 sols on the Moon! Final supplies: oxygen ${s.oxygen}%, water ${s.water}%, food ${s.food}%. You balanced power, protection, and supplies to bring everyone home safely.`, '🌕');return}
+    s.sol++;s.buildUsed=false;s.event=events[(s.sol-1)%events.length];render();
+    let criticallyLow=[['oxygen',s.oxygen],['water',s.water],['food',s.food],['radiation safety',s.shield],['morale',s.morale]].find(x=>x[1]<25);
+    if(criticallyLow){$('lessonText').textContent=`${criticallyLow[0]} is critically low. The crew needs a plan: adjust your operating priorities and consider a targeted upgrade. Mission systems depend on one another—protecting one resource can leave less power for another.`}
+  }
+  $('runSol').addEventListener('click',run);
+  $('reset').addEventListener('click',()=>{s=initial();s.event=events[0];$('modalWrap').classList.add('hidden');$('lessonText').textContent='Power is a shared budget. Running a greenhouse helps grow food and make oxygen, but every kilowatt-hour spent there is unavailable to other systems. There is no single best plan—only trade-offs.';render()});
+  $('modalButton').addEventListener('click',()=>{if(s.done){s=initial();s.event=events[0];$('lessonText').textContent='Power is a shared budget. Running a greenhouse helps grow food and make oxygen, but every kilowatt-hour spent there is unavailable to other systems. There is no single best plan—only trade-offs.'} $('modalWrap').classList.add('hidden');render()});
+  s.event=events[0];render();
+})();
+</script>
+</body>
+</html>
